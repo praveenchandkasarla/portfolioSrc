@@ -5,8 +5,10 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-  HostBinding
+  HostBinding,
+  ElementRef
 } from '@angular/core';
+import {Router} from '@angular/router'
 import { AppState } from './app.service';
 import { routerTransition } from './router.animations';
 
@@ -26,15 +28,23 @@ import { routerTransition } from './router.animations';
 })
 export class AppComponent implements OnInit {
   
-  constructor(
-    public appState: AppState
-  ) {}
+  public className:string;
+  constructor(private appState: AppState,private activeRouter: Router,private el: ElementRef) {
+    this.activeRouter.events.subscribe((data:any) => {
+        this.className = data.url.split('/').join(' ').trim();
+        this.changeBodyClass();
+      })
+   }
+  public changeBodyClass(){
+    if(this.el.nativeElement.parentElement.nodeName === 'BODY'){
+       this.el.nativeElement.parentElement.className = this.className ? this.className + '-page' : 'home-page';
+  }
+  }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
   getState(outlet) {
-    console.log("outlet state"+outlet.activatedRouteData.state);
     return outlet.activatedRouteData.state;
   }
 
