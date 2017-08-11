@@ -1,38 +1,164 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
   <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
   <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
-   
+    <!-- Configured Head Tags  -->
+    <%= webpackConfig.htmlElements.headTags %>
+      <% } %>
 
-  <%= htmlWebpackPlugin.files.webpackManifest %>
 
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	 crossorigin="anonymous">
+        <%= htmlWebpackPlugin.files.webpackManifest %>
 
-  <!-- CSS will be injected by webpack here -->
-  <!-- Preload link tags will be injected by webpack here -->
+          <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+            <!-- Webpack Dev Server reload -->
+            <script src="/webpack-dev-server.js"></script>
+            <% } %>
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                crossorigin="anonymous">
+
+              <!-- CSS will be injected by webpack here -->
+              <!-- Preload link tags will be injected by webpack here -->
 
 </head>
 
 <body>
-			<app></app>
+  <app></app>
   <!-- Scripts will be injected by webpack here -->
   <script src="assets/js/modernizr.custom.js"></script>
   <script src="https://use.fontawesome.com/771a39ca45.js"></script>
-	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="assets/js/three.js"></script>
+
+  <script>
+    var cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8, cube9, cube10, cube11, cube12;
+    var scene, camera, renderer;
+    function init(domObj) {
+      renderer = new THREE.WebGLRenderer({alpha: true});
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, 1.5, 1, 10000);
+      camera.position.z = 400;
+      var texture = new THREE.TextureLoader().load('assets/img/crate.gif');
+      var geometry = new THREE.BoxBufferGeometry(200, 200, 200);
+      var material = new THREE.MeshBasicMaterial({ map: texture });
+      //line1
+      cube1 = new THREE.Mesh(geometry, material);
+      cube1.scale.x = cube1.scale.y = cube1.scale.z = 0.40;
+      cube1.position.x = -300;
+      cube1.position.y = 200;
+      cube1.position.z = 0;
+      scene.add(cube1);
+      cube2 = new THREE.Mesh(geometry, material);
+      cube2.scale.x = cube2.scale.y = cube2.scale.z = 0.40;
+      cube2.position.x = -100;
+      cube2.position.y = 200;
+      cube2.position.z = 0;
+      scene.add(cube2);
+      cube3 = new THREE.Mesh(geometry, material);
+      cube3.scale.x = cube3.scale.y = cube3.scale.z = 0.40;
+      cube3.position.x = 100;
+      cube3.position.y = 200;
+      cube3.position.z = 0;
+      scene.add(cube3);
+      cube4 = new THREE.Mesh(geometry, material);
+      cube4.scale.x = cube4.scale.y = cube4.scale.z = 0.40;
+      cube4.position.x = 300;
+      cube4.position.y = 200;
+      cube4.position.z = 0;
+      scene.add(cube4);
+      //line2
+      cube5 = new THREE.Mesh(geometry, material);
+      cube5.scale.x = cube5.scale.y = cube5.scale.z = 0.40;
+      cube5.position.x = -300;
+      cube5.position.y = 50;
+      cube5.position.z = 0;
+      scene.add(cube5);
+      cube6 = new THREE.Mesh(geometry, material);
+      cube6.scale.x = cube6.scale.y = cube6.scale.z = 0.40;
+      cube6.position.x = -100;
+      cube6.position.y = 50;
+      cube6.position.z = 0;
+      scene.add(cube6);
+      cube7 = new THREE.Mesh(geometry, material);
+      cube7.scale.x = cube7.scale.y = cube7.scale.z = 0.40;
+      cube7.position.x = 100;
+      cube7.position.y = 50;
+      cube7.position.z = 0;
+      scene.add(cube7);
+      cube8 = new THREE.Mesh(geometry, material);
+      cube8.scale.x = cube8.scale.y = cube8.scale.z = 0.40;
+      cube8.position.x = 300;
+      cube8.position.y = 50;
+      cube8.position.z = 0;
+      scene.add(cube8);
+      //line3
+      cube9 = new THREE.Mesh(geometry, material);
+      cube9.scale.x = cube9.scale.y = cube9.scale.z = 0.40;
+      cube9.position.x = -300;
+      cube9.position.y = -100;
+      cube9.position.z = 0;
+      scene.add(cube9);
+      cube10 = new THREE.Mesh(geometry, material);
+      cube10.scale.x = cube10.scale.y = cube10.scale.z = 0.40;
+      cube10.position.x = -100;
+      cube10.position.y = -100;
+      cube10.position.z = 0;
+      scene.add(cube10);
+      cube11 = new THREE.Mesh(geometry, material);
+      cube11.scale.x = cube11.scale.y = cube11.scale.z = 0.40;
+      cube11.position.x = 100;
+      cube11.position.y = -100;
+      cube11.position.z = 0;
+      scene.add(cube11);
+      cube12 = new THREE.Mesh(geometry, material);
+      cube12.scale.x = cube12.scale.y = cube12.scale.z = 0.40;
+      cube12.position.x = 300;
+      cube12.position.y = -100;
+      cube12.position.z = 0;
+      scene.add(cube12);
+      renderer.setSize(domObj.clientWidth,800);
+      renderer.setPixelRatio(1);
+      domObj.appendChild(renderer.domElement);
+      animation();
+    }
+    function animation() {
+      requestAnimationFrame(animation);
+      cube1.rotation.x += 0.005;
+      cube1.rotation.y += 0.01;
+      cube2.rotation.x += 0.005;
+      cube2.rotation.y += 0.01;
+      cube3.rotation.x += 0.005;
+      cube3.rotation.y += 0.01;
+      cube4.rotation.x += 0.005;
+      cube4.rotation.y += 0.01;
+      cube5.rotation.x += 0.005;
+      cube5.rotation.y += 0.01;
+      cube6.rotation.x += 0.005;
+      cube6.rotation.y += 0.01;
+      cube7.rotation.x += 0.005;
+      cube7.rotation.y += 0.01;
+      cube8.rotation.x += 0.005;
+      cube8.rotation.y += 0.01;
+      cube9.rotation.x += 0.005;
+      cube9.rotation.y += 0.01;
+      cube10.rotation.x += 0.005;
+      cube10.rotation.y += 0.01;
+      cube11.rotation.x += 0.005;
+      cube11.rotation.y += 0.01;
+      cube12.rotation.x += 0.005;
+      cube12.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+  </script>
 </body>
+
 </html>
