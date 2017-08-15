@@ -6,7 +6,7 @@ import { NoContentComponent } from './no-content';
 import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
+  { path: '',      component: HomeComponent ,data: { state: 'home'}},
   { path: 'home',  component: HomeComponent , data: { state: 'home'} },
   { path: 'portfolio', component: PortfolioComponent, data: { state: 'portfolio'}  },
   { path: 'contact', component: ContactComponent, data: { state: 'contact'} },

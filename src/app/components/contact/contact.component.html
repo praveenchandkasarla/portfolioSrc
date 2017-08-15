@@ -1,42 +1,51 @@
 <!--<div style='width: 100%; height: 450px;color:#000000;'>
 		<div parallax speed="10" src='assets/img/contacts.jpg'> -->
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-12" style="color:#ffffff;">
 		<h2>Contact</h2>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="color:#ffffff;">
 		Email me:
-		<a style="color:#000000;" href="mailto:praveenchandkasarla@gmail.com">
+		<a style="color:#ffffff;" href="mailto:praveenchandkasarla@gmail.com">
 			<u><i>praveenchandkasarla@gmail.com</i></u>
 		</a>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-12">
-		Call me @ <a style="color:#000000;" href="tel:8705300022">8705300022</a>
+	<div class="col-sm-12" style="color:#ffffff;">
+		Call me @ <a style="color:#ffffff;" href="tel:8705300022">8705300022</a>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-sm-12">
-		Mail me:
-		<p><span>Name:</span>
-			<input type="text" width="50px;" [(ngModel)]="mailName" style="margin-left: 22px;" />
-		</p>
-		<div class="formfield">
-			<span>Message:</span>
-			<textarea rows="8" cols="50" [(ngModel)]="mailContent" placeholder="Please add contact info to respond back...">
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class="jumbotron">
+			<form [formGroup]="complexForm">
+				<div class="form-group required" [ngClass]="{'has-error':!complexForm.controls['mailId'].valid && complexForm.controls['mailId'].touched}">
+					<label class="control-label">Email Id:</label>
+					<input class="form-control" type="text" [formControl]="complexForm.controls['mailId']" />
+					<span *ngIf="(complexForm.controls['mailId'].hasError('required') || complexForm.controls['mailId'].hasError('pattern')) && complexForm.controls['mailId'].touched" class="alert alert-danger">You must include valid email.</span>
+				</div>
+				<div class="form-group required" [ngClass]="{'has-error':!complexForm.controls['mailName'].valid && complexForm.controls['mailName'].touched}">
+						<label class="control-label">Name:</label>
+						<input class="form-control" type="text" [formControl]="complexForm.controls['mailName']" />
+						<span *ngIf="(complexForm.controls['mailName'].hasError('required') || complexForm.controls['mailName'].hasError('pattern')) && complexForm.controls['mailName'].touched" class="alert alert-danger">You must include valid name.</span>
+					</div>
+				<div class="form-group required" [ngClass]="{'has-error':!complexForm.controls['mailContent'].valid && complexForm.controls['mailContent'].touched}">
+					<label class="control-label">Message:</label>
+					<textarea class="form-control" rows="8" cols="50" [formControl]="complexForm.controls['mailContent']" placeholder="Please add contact info to respond back...">
 					</textarea>
-		</div>
-		<div>
-			<input type="button" value="send" class="sendMail" (click)="sendEmail();" />
-			<span class="badge badge-pill badge-success" style="margin-top: 2em;" *ngIf="successResponse">Successfully sent</span>
-			<span class="badge badge-pill badge-danger" style="margin-top: 2em;" *ngIf="failedResponse">Error occured, please try again after sometime.</span>
+					<span *ngIf="(complexForm.controls['mailContent'].hasError('required') || complexForm.controls['mailContent'].hasError('minlength')) && complexForm.controls['mailContent'].touched" class="alert alert-danger">You must include valid Message</span>
+				</div>
+				<div class="form-group">
+					<button [disabled]="!complexForm.valid" class="btn btn-primary" (click)="sendEmail();">Send</button>
+					<span class="badge badge-pill badge-success" style="margin-top: 2em;" *ngIf="successResponse">Successfully sent</span>
+					<span class="badge badge-pill badge-danger" style="margin-top: 2em;" *ngIf="failedResponse">Error occured, please try again after sometime.</span>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
-<!--	</div>
-	</div>  -->

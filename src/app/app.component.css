@@ -4,13 +4,38 @@ html, body{
 }
 
 .home-page{
-     background-image: url('../assets/img/home.jpg');
+   /*  background-image: url('../assets/img/home.jpg');
+     Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #000000;
 }
 .portfolio-page{
-     background-image: url('../assets/img/portfolio.jpg');
+      /* Set a specific height */
+    min-height: 500px; 
+    /* Create the parallax scrolling effect 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #000000;
 }
 .contact-page{
-     background-image: url('../assets/img/contact.jpg');
+
+      /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    background-color: #000000;
 }
 a.active {
   background-color: gray;
@@ -245,7 +270,10 @@ button {
     }
 }
 
-
+.form-group.required .control-label:after{
+    content: "*";
+    color: red;
+}
 /* CSS for a 2x3 columns version */
 
 @media (min-width: 32.5em) and (max-width: 49.938em) {

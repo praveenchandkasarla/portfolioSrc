@@ -6,11 +6,13 @@ import {
   OnInit,
   ViewEncapsulation,
   HostBinding,
-  ElementRef
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 import {Router} from '@angular/router'
 import { AppState } from './app.service';
 import { routerTransition } from './router.animations';
+import { Ng2parallax } from '../../directives/parallax.directive';
 
 /**
  * App Component
@@ -29,6 +31,9 @@ import { routerTransition } from './router.animations';
 export class AppComponent implements OnInit {
   
   public className:string;
+  public parallaxClass:any;
+  @ViewChild('mainBody') mainBody: any;
+
   constructor(private appState: AppState,private activeRouter: Router,private el: ElementRef) {
     this.activeRouter.events.subscribe((data:any) => {
         this.className = data.url.split('/').join(' ').trim();
@@ -36,13 +41,12 @@ export class AppComponent implements OnInit {
       })
    }
   public changeBodyClass(){
-    if(this.el.nativeElement.parentElement.nodeName === 'BODY'){
-       this.el.nativeElement.parentElement.className = this.className ? this.className + '-page' : 'home-page';
-  }
+    this.mainBody.nativeElement.className = this.className ? this.className + '-page' : 'home-page';
   }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+
   }
   getState(outlet) {
     return outlet.activatedRouteData.state;
