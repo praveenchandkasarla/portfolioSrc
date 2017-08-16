@@ -69,8 +69,9 @@ a.active {
     margin-right: 0px;
     margin-left: 0px;
 }
-
-
+/* portfolio css */
+.blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px;}
+.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
 /* Global CSS that are applied for all screen sizes */
 
 .nav ul {

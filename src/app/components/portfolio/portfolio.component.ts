@@ -15,6 +15,9 @@ export class PortfolioComponent implements OnInit {
     public renderer: any;
     public mesh: any;
     public appendElement:number;
+    public centuryLinkLogo:string = "assets/icon/centurylink.png";
+    public gmLogo:string = "assets/icon/gm.png";
+    public bestbuyLogo:string = "assets/icon/bestbuy.png";
     @ViewChild('cube') cube: any;
     constructor(private _router: Router,private el: ElementRef) {
     }
